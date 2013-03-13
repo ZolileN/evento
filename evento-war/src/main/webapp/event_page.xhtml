@@ -27,7 +27,8 @@
     <div class="container" style="height: 100%">
         <div class="header">
             <div class="header-left">
-                <div class="header-logo"><h:graphicImage alt="logo" url="../../resources/img/eicon.jpg" height="100" width="100"/></div>
+                <div class="header-logo"><h:graphicImage alt="logo" url="../../resources/img/eicon.jpg" height="100"
+                                                         width="100"/></div>
                 <div class="header-text"><h:outputLabel value="Evento"/></div>
             </div>
             <div class="header-right">
@@ -38,7 +39,8 @@
                         </div>
                         <div style="text-align: right; margin-top: 10px">
                             <h:form id="logoutForm">
-                                <h:commandLink styleClass="link" value="Logout" action="#{homeController.destroySession}"/>
+                                <h:commandLink styleClass="link" value="Logout"
+                                               action="#{homeController.destroySession}"/>
                             </h:form>
                         </div>
                         <ui:insert name="header">
@@ -52,7 +54,8 @@
                                 <p:inputText id="email" value="#{loginController.user.email}"/>
                                 <h:outputLabel styleClass="label" value="Password" for="password"/>
                                 <p:password id="password" value="#{loginController.user.password}"/>
-                                <p:commandButton id="logIn" action="#{loginController.logIn}" value="Log In" style="margin-left: 10px"/>
+                                <p:commandButton id="logIn" action="#{loginController.logIn}" value="Log In"
+                                                 style="margin-left: 10px"/>
                             </h:form>
                         </div>
                         <div class="header-right-link">
@@ -88,7 +91,8 @@
                         <h:outputLabel value="Date *"/>
                         <h:outputText value="#{eventPageController.event.date}"/>
                         <h:outputLabel value="Time *"/>
-                        <h:outputText value="#{eventPageController.event.hour} : #{eventPageController.event.min} #{eventPageController.event.period}"/>
+                        <h:outputText
+                                value="#{eventPageController.event.hour} : #{eventPageController.event.min} #{eventPageController.event.period}"/>
                         <h:outputLabel value="Description *"/>
                         <h:outputText escape="false" value="#{eventPageController.event.description}"/>
                         <h:outputLabel value="Ticket Number *"/>
@@ -126,15 +130,25 @@
                                 <c:when test="${isOrganizer == 1}">
                                     <c:choose>
                                         <c:when test="#{eventPageController.event.publish == 0}">
-                                            <p:commandButton action="#{eventPageController.publishEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Publish"/>
+                                            <p:commandButton action="#{eventPageController.publishEvent}"
+                                                             style="float: right; margin-top: 15px; margin-bottom: 5px"
+                                                             value="Publish"/>
                                         </c:when>
+                                        <c:otherwise>
+                                            <p:commandButton action="#{eventPageController.unPublishEvent}"
+                                                             style="float: right; margin-top: 15px; margin-bottom: 5px"
+                                                             value="Un-Publish"/>
+                                        </c:otherwise>
                                     </c:choose>
-                                    <p:button outcome="event_create.xhtml" value="Edit Event" style="float: right; margin-top: 15px; margin-bottom: 5px">
+                                    <p:button outcome="event_create.xhtml" value="Edit Event"
+                                              style="float: right; margin-top: 15px; margin-bottom: 5px">
                                         <f:param name="eventId" value="#{eventPageController.event.id}"/>
                                     </p:button>
                                 </c:when>
                                 <c:otherwise>
-                                    <p:commandButton action="#{eventPageController.joinEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Join Event"/>
+                                    <p:commandButton action="#{eventPageController.joinEvent}"
+                                                     style="float: right; margin-top: 15px; margin-bottom: 5px"
+                                                     value="Join Event"/>
                                 </c:otherwise>
                             </c:choose>
                         </c:when>
