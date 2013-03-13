@@ -104,7 +104,10 @@ public class EventDaoImpl implements EventDao {
 
     @Override
     public List<Event> getLimitedEvents(int limit) {
-        return entityManager.createQuery("SELECT e FROM Event e ORDER BY e.id DESC", Event.class)
+        return entityManager.createQuery("SELECT e " +
+                                         "FROM Event e " +
+                                         "WHERE e.publish <> 0 " +
+                                         "ORDER BY e.id DESC", Event.class)
                             .setMaxResults(limit)
                             .getResultList();
     }
