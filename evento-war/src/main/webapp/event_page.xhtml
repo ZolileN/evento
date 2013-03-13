@@ -129,7 +129,9 @@
                                             <p:commandButton action="#{eventPageController.publishEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Publish"/>
                                         </c:when>
                                     </c:choose>
-                                    <p:commandButton action="#{eventCreateController.createEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Edit Event"/>
+                                    <p:button outcome="event_create.xhtml" value="Edit Event" style="float: right; margin-top: 15px; margin-bottom: 5px">
+                                        <f:param name="eventId" value="#{eventPageController.event.id}"/>
+                                    </p:button>
                                 </c:when>
                                 <c:otherwise>
                                     <p:commandButton action="#{eventPageController.joinEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Join Event"/>

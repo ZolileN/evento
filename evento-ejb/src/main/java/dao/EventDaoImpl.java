@@ -122,4 +122,9 @@ public class EventDaoImpl implements EventDao {
             return null;
         }
     }
+
+    @Override
+    public void updateEventInfo(Event event) {
+        entityManager.merge(event);
+    }
 }

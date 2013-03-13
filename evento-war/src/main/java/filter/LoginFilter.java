@@ -51,8 +51,6 @@ public class LoginFilter implements Filter {
             redirect(servletRequest, servletResponse, filterChain);
         } else if (requestedUri.equals("/evento/event/join/suc")) {
             redirect(servletRequest, servletResponse, filterChain);
-        } else if(requestedUri.equals("/evento/event")) {
-            redirect(servletRequest, servletResponse, filterChain);
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

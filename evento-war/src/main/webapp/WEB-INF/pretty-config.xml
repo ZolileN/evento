@@ -33,13 +33,13 @@
         <view-id value="/event_create.xhtml" />
     </url-mapping>
 
-    <url-mapping id="eventEdit">
-        <pattern value="/event/edit/#{id}" />
-        <view-id value="/event_edit.xhtml" />
+    <url-mapping id="eventSave">
+        <pattern value="/event/create/#{eventId}" />
+        <view-id value="/event_create.xhtml" />
     </url-mapping>
 
     <url-mapping id="myEvents">
-        <pattern value="/event/"></pattern>
+        <pattern value="/event/" />
         <view-id value="/my_events.xhtml"/>
     </url-mapping>
 

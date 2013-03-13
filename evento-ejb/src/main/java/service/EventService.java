@@ -67,4 +67,8 @@ public class EventService {
         return eventDao.getEventBySearch(search);
     }
 
+    public void updateEventInfo(Event event) {
+        eventDao.updateEventInfo(event);
+    }
+
 }

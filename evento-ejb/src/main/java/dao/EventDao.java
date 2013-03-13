@@ -34,4 +34,6 @@ public interface EventDao {
     public List<Event> getLimitedEvents(int limit);
 
     public List<Event> getEventBySearch(String search);
+
+    public void updateEventInfo(Event event);
 }
