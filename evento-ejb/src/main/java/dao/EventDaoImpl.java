@@ -36,7 +36,7 @@ public class EventDaoImpl implements EventDao {
                     "FROM User u " +
                     "JOIN FETCH u.eventList e " +
                     "WHERE u.id = :userId " +
-                    "ORDER BY u.id DESC")
+                    "ORDER BY e.id DESC")
                     .setParameter("userId", userId).getSingleResult();
         } catch (NoResultException ex) {
             return null;

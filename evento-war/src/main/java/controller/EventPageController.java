@@ -57,7 +57,7 @@ public class EventPageController {
     public String publishEvent() {
         event.setPublish(1);
         eventService.publishEvent(event);
-        return "home.xhtml?faces-redirect=true";
+        return "my_events.xhtml?faces-redirect=true";
     }
 
     public Integer getPublish() {
