@@ -2,6 +2,8 @@ package controller;
 
 import entities.Event;
 import entities.User;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import service.EventService;
 import service.UserService;
 
@@ -11,6 +13,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,13 +36,20 @@ public class MyEventsController {
     private HttpSession session;
     private List<Event> eventList;
 
+    protected final Log log = LogFactory.getLog(getClass());
+
     @PostConstruct
     public void startUp() {
         facesContext = FacesContext.getCurrentInstance();
         session = (HttpSession) facesContext.getExternalContext().getSession(false);
 
         user = eventService.getEventByUserId((Integer)session.getAttribute("userId"));
-        eventList = user.getEventList();
+
+        if(user == null) {
+            eventList = new ArrayList<Event>();
+        } else {
+            eventList = user.getEventList();
+        }
     }
 
     public Integer getEventListSize() {
