@@ -19,4 +19,6 @@ public interface UserDao {
     public User getUser(User user);
 
     public User getUserById(int userId);
+
+    public void updateUserInfo(User user);
 }

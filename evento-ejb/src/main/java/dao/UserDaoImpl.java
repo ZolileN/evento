@@ -56,4 +56,9 @@ public class UserDaoImpl implements Serializable, UserDao {
     public User getUserById(int userId) {
         return entityManager.find(User.class, userId);
     }
+
+    @Override
+    public void updateUserInfo(User user) {
+        entityManager.merge(user);
+    }
 }

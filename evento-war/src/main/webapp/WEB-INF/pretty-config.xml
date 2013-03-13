@@ -43,4 +43,9 @@
         <view-id value="/my_events.xhtml"/>
     </url-mapping>
 
+    <url-mapping id="myProfile">
+        <pattern value="/profile"/>
+        <view-id value="my_profile.xhtml"/>
+    </url-mapping>
+
 </pretty-config>
