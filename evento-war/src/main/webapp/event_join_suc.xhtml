@@ -2,7 +2,7 @@
 
 <!--
   Created by IntelliJ IDEA.
-  UserInt: sahmed
+  User: sahmed
   Date: 1/29/13
   Time: 11:03 AM
 -->
@@ -12,7 +12,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <f:loadBundle var="msg" basename="messages"/>
 
@@ -37,15 +37,9 @@
                         <h:commandLink styleClass="link" value="Logout" action="#{homeController.destroySession}"/>
                     </h:form>
                 </div>
-                <div class="menu">
-                    <p:menubar>
-                        <p:menuitem value="Home" url="/home"/>
-                        <p:menuitem value="Create New Event" url="/event/create"/>
-                        <p:menuitem value="My Events" url="/event/"/>
-                        <p:menuitem value="My Profile" url="#"/>
-                        <p:menuitem value="My Contacts" url="#"/>
-                    </p:menubar>
-                </div>
+                <ui:insert name="header">
+                    <ui:include src="common/menu.xhtml"/>
+                </ui:insert>
             </div>
         </div>
         <div class="content" style="height: 30%">
