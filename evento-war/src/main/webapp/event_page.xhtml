@@ -44,7 +44,7 @@
                             <p:menubar>
                                 <p:menuitem value="Home" url="/home"/>
                                 <p:menuitem value="Create New Event" url="/event/create"/>
-                                <p:menuitem value="My Events" url="#"/>
+                                <p:menuitem value="My Events" url="/event"/>
                                 <p:menuitem value="My Profile" url="#"/>
                                 <p:menuitem value="My Contacts" url="#"/>
                             </p:menubar>
@@ -71,7 +71,7 @@
         </div>
         <div class="content" style="height: 30%">
             <div class="sub-header">
-                Events Page
+                Event Page
             </div>
             <div class="left" style="margin-top: 20px">
                 <div class="portrait">
@@ -127,7 +127,6 @@
                     </p:panelGrid>
                     <c:choose>
                         <c:when test="#{!empty homeController.user.email}">
-                            <p:button outcome="home.xthml" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Back"/>
                             <c:choose>
                                 <c:when test="${isOrganizer == 1}">
                                     <c:choose>
@@ -135,16 +134,13 @@
                                             <p:commandButton action="#{eventPageController.publishEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Publish"/>
                                         </c:when>
                                     </c:choose>
-                                    <p:commandButton action="#{eventCreateController.createEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Edit"/>
+                                    <p:commandButton action="#{eventCreateController.createEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Edit Event"/>
                                 </c:when>
                                 <c:otherwise>
                                     <p:commandButton action="#{eventPageController.joinEvent}" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Join Event"/>
                                 </c:otherwise>
                             </c:choose>
                         </c:when>
-                        <c:otherwise>
-                            <p:button outcome="index.xthml" style="float: right; margin-top: 15px; margin-bottom: 5px" value="Back"/>
-                        </c:otherwise>
                     </c:choose>
                 </h:form>
             </div>

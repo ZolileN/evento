@@ -2,7 +2,7 @@
 
 <!--
   Created by IntelliJ IDEA.
-  UserInt: sahmed
+  User: sahmed
   Date: 1/29/13
   Time: 11:03 AM
 -->
@@ -26,7 +26,7 @@
     <div class="container">
         <div class="header">
             <div class="header-left">
-                <div class="header-logo"><h:graphicImage alt="logo" url="resources/img/eicon.jpg" height="100" width="100"/></div>
+                <div class="header-logo"><h:graphicImage alt="logo" url="../resources/img/eicon.jpg" height="100" width="100"/></div>
                 <div class="header-text"><h:outputLabel value="Evento"/></div>
             </div>
             <div class="header-right">
@@ -53,13 +53,21 @@
             <div class="content-left">
                 <div class="content-left-header">
                     <div class="sub-header left">
-                        Home
+                        My Events :
+                        <c:choose>
+                            <c:when test="#{!empty myEventsController.eventList}">
+                                #{myEventsController.eventListSize}
+                            </c:when>
+                            <c:otherwise>
+                                0
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="content-left-body">
                     <c:choose>
-                        <c:when test="#{!empty homeController.eventList}">
-                            <p:dataList styleClass="datalist" value="#{homeController.eventList}" var="searchList"
+                        <c:when test="#{!empty myEventsController.eventList}">
+                            <p:dataList styleClass="datalist" value="#{myEventsController.eventList}" var="searchList"
                                         paginator="true" rows="4" effectSpeed="fast"
                                         paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
                                         rowsPerPageTemplate="5,10,15" type="none">

@@ -38,4 +38,9 @@
         <view-id value="/event_edit.xhtml" />
     </url-mapping>
 
+    <url-mapping id="myEvents">
+        <pattern value="/event/"></pattern>
+        <view-id value="/my_events.xhtml"/>
+    </url-mapping>
+
 </pretty-config>
