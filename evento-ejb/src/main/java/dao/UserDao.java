@@ -24,4 +24,6 @@ public interface UserDao {
     public void updateUserInfo(User user);
 
     public User getUserWithContactList(Integer userId);
+
+    public List<User> getUserForAutoComplete(Integer userId, String query);
 }

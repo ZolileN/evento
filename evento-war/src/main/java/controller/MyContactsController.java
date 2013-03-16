@@ -11,6 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +32,8 @@ public class MyContactsController {
     private FacesContext facesContext;
     private HttpSession session;
     private List<User> contactList;
+    private List<User> userList;
+    private Integer userId;
 
     protected final Log log = LogFactory.getLog(getClass());
 
@@ -39,11 +42,17 @@ public class MyContactsController {
         facesContext = FacesContext.getCurrentInstance();
         session = (HttpSession) facesContext.getExternalContext().getSession(true);
 
-        user = userService.getUserWithContactList((Integer)session.getAttribute("userId"));
-        System.out.println("MyContactsController-user: " + user);
-
+        user = userService.getUserWithContactList((Integer) session.getAttribute("userId"));
+        userId = user.getId();
         contactList = user.getContactList();
-        System.out.println("MyContactsController-contact: " + contactList);
+    }
+
+    public List<User> complete(String query) {
+        return userService.getUserForAutoComplete(userId, query);
+    }
+
+    public void addContacts() {
+
     }
 
     public List<User> getContactList() {
@@ -52,5 +61,13 @@ public class MyContactsController {
 
     public void setContactList(List<User> contactList) {
         this.contactList = contactList;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }

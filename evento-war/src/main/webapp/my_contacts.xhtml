@@ -79,30 +79,21 @@
                 </div>
             </div>
             <div class="content-right" style="margin-left:20px;margin-top: 40px">
-                <div>
-                    <h:form id="search">
-                        <p:panel header="Search Contact">
-                            <h:panelGrid columns="2" id="matchGrid">
-                                <h:outputLabel for="eventName" value="Email"/>
-                                <p:inputText id="eventName" value="#{searchController.searchTag}" required="true"
-                                             requiredMessage="Email Required"/>
-                            </h:panelGrid>
-                            <p:commandButton id="btnSearch" value="Search" action="#{searchController.search}"/>
-                        </p:panel>
-                    </h:form>
-                </div>
-                <div style="margin-top: 20px">
-                    <h:form id="addContact">
-                        <p:panel header="Add New Contact">
-                            <h:panelGrid columns="2" id="contactGrid">
-                                <h:outputLabel for="contactName" value="Name"/>
-                                <p:inputText id="contactName" value="#{searchController.searchTag}" required="true"
-                                             requiredMessage="Name Required"/>
-                            </h:panelGrid>
-                            <p:commandButton id="btnContactSearch" value="Add" action="#{searchController.search}"/>
-                        </p:panel>
-                    </h:form>
-                </div>
+                <h:form id="addContact">
+                    <p:panel header="Add New Contact">
+                        <h:panelGrid columns="2" id="contactGrid">
+                            <h:outputLabel value="Email"/>
+                            <p:autoComplete style="border: 1px #000 solid;"
+                                            value="#{myContactsController.userList}"
+                                            completeMethod="#{myContactsController.complete}"
+                                            var="user" itemLabel="#{user.email}" itemValue="#{user}"
+                                            converter="userAutoComplete"
+                                            multiple="true"/>
+                        </h:panelGrid>
+                        <p:commandButton id="btnContactSearch" value="Add"
+                                         action="#{myContactsController.addContacts}"/>
+                    </p:panel>
+                </h:form>
             </div>
         </div>
         <div class="footer">

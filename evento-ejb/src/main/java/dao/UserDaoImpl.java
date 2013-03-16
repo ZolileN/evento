@@ -77,4 +77,18 @@ public class UserDaoImpl implements Serializable, UserDao {
             return null;
         }
     }
+
+    @Override
+    public List<User> getUserForAutoComplete(Integer userId, String query) {
+        try {
+            return entityManager.createQuery("SELECT u " +
+                    "FROM User u " +
+                    "WHERE u.id <> :userId AND u.email LIKE :search")
+                    .setParameter("userId", userId)
+                    .setParameter("search", "%" + query + "%")
+                    .getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
 }

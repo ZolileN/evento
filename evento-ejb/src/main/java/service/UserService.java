@@ -60,4 +60,8 @@ public class UserService {
     public User getUserWithContactList(Integer userId) {
         return userDao.getUserWithContactList(userId);
     }
+
+    public List<User> getUserForAutoComplete(Integer userId, String query) {
+        return userDao.getUserForAutoComplete(userId, query);
+    }
 }
