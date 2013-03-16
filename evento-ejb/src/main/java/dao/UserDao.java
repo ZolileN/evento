@@ -3,6 +3,7 @@ package dao;
 import entities.User;
 
 import javax.ejb.Local;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,4 +22,6 @@ public interface UserDao {
     public User getUserById(int userId);
 
     public void updateUserInfo(User user);
+
+    public User getUserWithContactList(Integer userId);
 }

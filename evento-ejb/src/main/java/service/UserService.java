@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -54,5 +55,9 @@ public class UserService {
 
     public void updateUserInfo(User user) {
         userDao.updateUserInfo(user);
+    }
+
+    public User getUserWithContactList(Integer userId) {
+        return userDao.getUserWithContactList(userId);
     }
 }

@@ -48,4 +48,9 @@
         <view-id value="my_profile.xhtml"/>
     </url-mapping>
 
+    <url-mapping id="myContacts">
+        <pattern value="/contacts"/>
+        <view-id value="my_contacts.xhtml"/>
+    </url-mapping>
+
 </pretty-config>

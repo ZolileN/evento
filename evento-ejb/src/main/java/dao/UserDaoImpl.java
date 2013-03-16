@@ -10,6 +10,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,9 +40,9 @@ public class UserDaoImpl implements Serializable, UserDao {
         String email = user.getEmail();
         String pass = user.getPassword();
         TypedQuery<User> query = entityManager.createQuery("SELECT u " +
-                                                            "FROM User u " +
-                                                            "WHERE u.email = :email AND u.password = :pass",
-                                                            User.class);
+                "FROM User u " +
+                "WHERE u.email = :email AND u.password = :pass",
+                User.class);
         query.setParameter("email", email);
         query.setParameter("pass", pass);
         try {
@@ -60,5 +61,20 @@ public class UserDaoImpl implements Serializable, UserDao {
     @Override
     public void updateUserInfo(User user) {
         entityManager.merge(user);
+    }
+
+    @Override
+    public User getUserWithContactList(Integer userId) {
+        try {
+            return (User) entityManager.createQuery("SELECT u " +
+                    "FROM User u " +
+                    "JOIN FETCH u.contactList c " +
+                    "WHERE u.id = :userId " +
+                    "ORDER BY u.id DESC")
+                    .setParameter("userId", userId)
+                    .getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
 }
