@@ -130,4 +130,19 @@ public class User implements Serializable {
     public void setContactList(List<User> contactList) {
         this.contactList = contactList;
     }
+
+    //    @Override
+//    public int hashCode() {
+//        int hash = 1;
+//        return hash * 31 + email.hashCode();
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if(obj == null)
+//            return false;
+//        if(!(obj instanceof User))
+//            return false;
+//        return ((User)obj).getEmail() == this.email;
+//    }
 }

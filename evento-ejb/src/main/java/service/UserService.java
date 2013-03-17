@@ -4,6 +4,7 @@ import dao.UserDao;
 import entities.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.List;
@@ -33,7 +34,7 @@ public class UserService {
     public Integer logInService(User user) {
         user = userDao.getUser(user);
         log.info("logInService: " + user);
-        if(user == null) {
+        if (user == null) {
             return null;
         } else {
             System.out.println("logInService: " + user.getId());
@@ -63,5 +64,10 @@ public class UserService {
 
     public List<User> getUserForAutoComplete(Integer userId, String query) {
         return userDao.getUserForAutoComplete(userId, query);
+    }
+
+    public void addFriend(Integer userId, String email) {
+        User friend = userDao.getUserByEmail(email);
+        userDao.updateUserContactList(userId, friend);
     }
 }

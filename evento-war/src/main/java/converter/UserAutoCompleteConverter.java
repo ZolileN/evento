@@ -1,6 +1,8 @@
 package converter;
 
 import entities.User;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,11 +16,26 @@ import javax.faces.convert.FacesConverter;
  * Time: 5:08 PM
  */
 
-@FacesConverter("userAutoComplete")
+@FacesConverter("userAutoCompleteConverter")
 public class UserAutoCompleteConverter implements Converter {
+
+    protected final Log log = LogFactory.getLog(getClass());
+    private boolean validationStatus;
+
     @Override
-    public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
-        return null;
+    public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String submittedValue) {
+        validationStatus = FacesContext.getCurrentInstance().isValidationFailed();
+
+        System.out.println("UserAutoCompleteConverter-getAsObject: " + submittedValue);
+        System.out.println("UserAutoCompleteConverter-validationStatus: " + validationStatus);
+
+        if (!validationStatus) {
+            return null;
+        } else {
+            User user = new User();
+            user.setEmail(submittedValue);
+            return user;
+        }
     }
 
     @Override

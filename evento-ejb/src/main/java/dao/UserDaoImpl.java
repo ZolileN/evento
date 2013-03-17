@@ -91,4 +91,24 @@ public class UserDaoImpl implements Serializable, UserDao {
             return null;
         }
     }
+
+    @Override
+    public void updateUserContactList(Integer userId, User friend) {
+        User user = getUserById(userId);
+        user.getContactList().add(friend);
+        entityManager.merge(user);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        try {
+            return (User) entityManager.createQuery("SELECT u " +
+                    "FROM User u " +
+                    "WHERE u.email = :email")
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
 }

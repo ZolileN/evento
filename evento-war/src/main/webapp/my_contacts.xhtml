@@ -81,16 +81,14 @@
             <div class="content-right" style="margin-left:20px;margin-top: 40px">
                 <h:form id="addContact">
                     <p:panel header="Add New Contact">
+                        <p:messages autoUpdate="true"/>
                         <h:panelGrid columns="2" id="contactGrid">
                             <h:outputLabel value="Email"/>
-                            <p:autoComplete style="border: 1px #000 solid;"
-                                            value="#{myContactsController.userList}"
-                                            completeMethod="#{myContactsController.complete}"
-                                            var="user" itemLabel="#{user.email}" itemValue="#{user}"
-                                            converter="userAutoComplete"
-                                            multiple="true"/>
+                            <p:autoComplete id="autoComplete" value="#{myContactsController.autoCompleteUserEmail}"
+                                            completeMethod="#{myContactsController.complete}" required="true"
+                                            requiredMessage="Email Required"/>
                         </h:panelGrid>
-                        <p:commandButton id="btnContactSearch" value="Add"
+                        <p:commandButton id="btnContactAdd" value="Add"
                                          action="#{myContactsController.addContacts}"/>
                     </p:panel>
                 </h:form>
