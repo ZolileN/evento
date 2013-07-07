@@ -33,8 +33,6 @@ import java.util.List;
 public class IndexController {
 
     private User user;
-    private List<Event> eventList;
-
 
     protected final Logger log = LoggerFactory.getLogger(IndexController.class);
 
@@ -47,13 +45,10 @@ public class IndexController {
     @PostConstruct
     public void startUp() {
         log.info("index-user-before: " + user);
-
         if(user == null) {
             user = new User();
             log.info("index-user-after: " + user);
         }
-
-        eventList = eventService.getLimitedEvents(10);
     }
 
     public String signUp() {
@@ -66,8 +61,6 @@ public class IndexController {
         return "index.xhtml?faces-redirect=true";
     }
 
-
-
     public User getUser() {
         return user;
     }
@@ -77,12 +70,6 @@ public class IndexController {
     }
 
     public List<Event> getEventList() {
-        return eventList;
+        return eventService.getLimitedEvents(10);
     }
-
-    public void setEventList(List<Event> eventList) {
-        this.eventList = eventList;
-    }
-
-
 }

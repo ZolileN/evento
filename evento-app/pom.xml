@@ -56,7 +56,7 @@
                         <webModule>
                             <groupId>evento</groupId>
                             <artifactId>evento-war</artifactId>
-                            <contextRoot>/evento</contextRoot>
+                            <contextRoot>/app</contextRoot>
                         </webModule>
                     </modules>
 
