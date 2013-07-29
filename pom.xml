@@ -5,7 +5,7 @@
     <groupId>evento</groupId>
     <artifactId>evento</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 
     <modules>
         <module>evento-ejb</module>
@@ -43,14 +43,14 @@
             <dependency>
                 <groupId>evento</groupId>
                 <artifactId>evento-ejb</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.1-SNAPSHOT</version>
                 <type>ejb</type>
             </dependency>
 
             <dependency>
                 <groupId>evento</groupId>
                 <artifactId>evento-war</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.1-SNAPSHOT</version>
                 <type>war</type>
             </dependency>
 
